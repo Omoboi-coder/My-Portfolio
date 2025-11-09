@@ -206,53 +206,70 @@ export default function Portfolio() {
             </div>
           </div>
         </div>
+      {/* Mobile Menu Overlay */}
+  <div 
+  className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
+    isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+  }`}
+  onClick={(e) => {
+    e.stopPropagation();
+    setIsMenuOpen(false);
+  }}
+  />
 
-        {/* Mobile Menu Overlay */}
-        <div 
-          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
-            isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          }`}
+      {/* Mobile Menu */}
+  <div 
+  className={`fixed top-16 left-0 right-0 md:hidden z-40 transition-all duration-500 ease-out ${
+    isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+  }`}
+  onClick={(e) => e.stopPropagation()}
+  >
+  <div className={`mx-4 mt-2 rounded-2xl shadow-2xl overflow-hidden ${
+    darkMode ? 'bg-gray-800' : 'bg-white'
+  }`}>
+    {/* Close Button */}
+    <div className="flex justify-end px-4 pt-4">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsMenuOpen(false);
+        }}
+        aria-label="Close menu"
+        className={`p-2 rounded-lg transition-colors ${
+          darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
+        }`}
+      >
+        <X size={24} className={darkMode ? 'text-gray-300' : 'text-gray-600'} />
+      </button>
+    </div>
+
+    <div className="px-6 pb-8 pt-4 space-y-1">
+      {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item, index) => (
+        <button
+          key={item}
+          type="button"
           onClick={(e) => {
+            e.preventDefault();
             e.stopPropagation();
-            setIsMenuOpen(false);
+            scrollToSection(item);
           }}
-        />
-        
-        {/* Mobile Menu */}
-        <div 
-          className={`fixed top-16 left-0 right-0 md:hidden z-40 transition-all duration-500 ease-out ${
-            isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
-          }`}
-          onClick={(e) => e.stopPropagation()}
+          style={{ animationDelay: `${index * 50}ms` }}
+          className={`block w-full text-center capitalize py-4 rounded-xl font-semibold text-lg transition-all ${
+            activeSection === item 
+              ? 'bg-linear-to-r from-blue-500 to-purple-600 text-white scale-105' 
+              : darkMode 
+                ? 'text-gray-300 hover:bg-gray-700' 
+                : 'text-gray-700 hover:bg-gray-100'
+          } ${isMenuOpen ? 'animate-slide-in' : ''}`}
         >
-          <div className={`mx-4 mt-2 rounded-2xl shadow-2xl overflow-hidden ${
-            darkMode ? 'bg-gray-800' : 'bg-white'
-          }`}>
-            <div className="px-6 py-8 space-y-1">
-              {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item, index) => (
-                <button
-                  key={item}
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    scrollToSection(item);
-                  }}
-                  style={{ animationDelay: `${index * 50}ms` }}
-                  className={`block w-full text-center capitalize py-4 rounded-xl font-semibold text-lg transition-all ${
-                    activeSection === item 
-                      ? 'bg-linear-to-r from-blue-500 to-purple-600 text-white scale-105' 
-                      : darkMode 
-                        ? 'text-gray-300 hover:bg-gray-700' 
-                        : 'text-gray-700 hover:bg-gray-100'
-                  } ${isMenuOpen ? 'animate-slide-in' : ''}`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
+          {item}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
       </nav>
 
       {/* Hero Section */}
