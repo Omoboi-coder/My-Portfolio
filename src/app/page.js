@@ -274,7 +274,7 @@ export default function Portfolio() {
           </h1>
           
           <p className={`text-xl md:text-2xl mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Microbiologist turned Full-Stack Developer
+            Microbiologist turned Front-End Developer
           </p>
           
           <p className={`text-lg mb-10 max-w-2xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -323,7 +323,7 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-10 px-4">
+      <section id="about" className="py-10  px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
             About <span className="bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Me</span>
@@ -331,7 +331,7 @@ export default function Portfolio() {
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className={`rounded-2xl text-[17px] p-8 ${darkMode ? 'bg-gray-800' : 'bg-white shadow-xl'}`}>
-              <h3 className="text-2xl font-bold mb-4">My Journey</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center md:text-start">My Journey</h3>
               <p className={`mb-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                 I started as a Microbiologist with a B.Sc. from Ekiti State University, but my passion for 
                 technology and creating digital experiences led me to the world of web development.
@@ -481,7 +481,7 @@ export default function Portfolio() {
       <section id="skills" className={`py-10 px-4 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100'}`}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            <span className="bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Skills</span> & Technologies
+            <span className="bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Skills</span> & Resources
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
