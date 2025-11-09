@@ -333,7 +333,7 @@ export default function Portfolio() {
 
             {/* Right - Image */}
             <div className="order-1 md:order-2 flex justify-center md:justify-start">
-              <div className="relative w-92 h-92 md:w-110 md:h-110">
+              <div className="relative w-72 h-72 md:w-110 md:h-110">
                 <div className={`w-full h-full rounded-full overflow-hidden ${
                   darkMode ? 'bg-gray-800' : 'bg-gray-200'
                 }`}>
