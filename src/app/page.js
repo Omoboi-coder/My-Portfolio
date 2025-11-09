@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun, Mail, ExternalLink, Code, Briefcase, GraduationCap, Menu, X, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 
 // Brand Icons (Lucide deprecated these, so we use custom SVGs)
 const Linkedin = ({ size = 24, className = "" }) => (
@@ -50,7 +51,7 @@ export default function Portfolio() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80; // Account for fixed navbar
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -105,7 +106,6 @@ export default function Portfolio() {
       link: "https://growtoken-landing-page.vercel.app/",
       github: "#"
     },
-
     {
       title: "Healthcare App",
        description: "A well strutured and multi-page Healthcare app for consultation and book test appointments.",
@@ -153,7 +153,7 @@ export default function Portfolio() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex md:text-xl space-x-8">
+            <div className="hidden md:flex md:text-lg space-x-8">
               {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
                 <button
                   key={item}
@@ -206,136 +206,171 @@ export default function Portfolio() {
             </div>
           </div>
         </div>
-      {/* Mobile Menu Overlay */}
-  <div 
-  className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
-    isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-  }`}
-  onClick={(e) => {
-    e.stopPropagation();
-    setIsMenuOpen(false);
-  }}
-  />
 
-      {/* Mobile Menu */}
-  <div 
-  className={`fixed top-16 left-0 right-0 md:hidden z-40 transition-all duration-500 ease-out ${
-    isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
-  }`}
-  onClick={(e) => e.stopPropagation()}
-  >
-  <div className={`mx-4 mt-2 rounded-2xl shadow-2xl overflow-hidden ${
-    darkMode ? 'bg-gray-800' : 'bg-white'
-  }`}>
-    {/* Close Button */}
-    <div className="flex justify-end px-4 pt-4">
-      <button
-        type="button"
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsMenuOpen(false);
-        }}
-        aria-label="Close menu"
-        className={`p-2 rounded-lg transition-colors ${
-          darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
-        }`}
-      >
-        <X size={24} className={darkMode ? 'text-gray-300' : 'text-gray-600'} />
-      </button>
-    </div>
-
-    <div className="px-6 pb-8 pt-4 space-y-1">
-      {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item, index) => (
-        <button
-          key={item}
-          type="button"
+        {/* Mobile Menu Overlay */}
+        <div 
+          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
+            isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
           onClick={(e) => {
-            e.preventDefault();
             e.stopPropagation();
-            scrollToSection(item);
+            setIsMenuOpen(false);
           }}
-          style={{ animationDelay: `${index * 50}ms` }}
-          className={`block w-full text-center capitalize py-4 rounded-xl font-semibold text-lg transition-all ${
-            activeSection === item 
-              ? 'bg-linear-to-r from-blue-500 to-purple-600 text-white scale-105' 
-              : darkMode 
-                ? 'text-gray-300 hover:bg-gray-700' 
-                : 'text-gray-700 hover:bg-gray-100'
-          } ${isMenuOpen ? 'animate-slide-in' : ''}`}
+        />
+
+        {/* Mobile Menu */}
+        <div 
+          className={`fixed top-16 left-0 right-0 md:hidden z-40 transition-all duration-500 ease-out ${
+            isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+          }`}
+          onClick={(e) => e.stopPropagation()}
         >
-          {item}
-        </button>
-      ))}
-    </div>
-  </div>
-</div>
+          <div className={`mx-4 mt-2 rounded-2xl shadow-2xl overflow-hidden ${
+            darkMode ? 'bg-gray-800' : 'bg-white'
+          }`}>
+            {/* Close Button */}
+            <div className="flex justify-end px-4 pt-4">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setIsMenuOpen(false);
+                }}
+                aria-label="Close menu"
+                className={`p-2 rounded-lg transition-colors ${
+                  darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
+                }`}
+              >
+                <X size={24} className={darkMode ? 'text-gray-300' : 'text-gray-600'} />
+              </button>
+            </div>
+
+            <div className="px-6 pb-8 pt-4 space-y-1">
+              {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item, index) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    scrollToSection(item);
+                  }}
+                  style={{ animationDelay: `${index * 50}ms` }}
+                  className={`block w-full text-center capitalize py-4 rounded-xl font-semibold text-lg transition-all ${
+                    activeSection === item 
+                      ? 'bg-linear-to-r from-blue-500 to-purple-600 text-white scale-105' 
+                      : darkMode 
+                        ? 'text-gray-300 hover:bg-gray-700' 
+                        : 'text-gray-700 hover:bg-gray-100'
+                  } ${isMenuOpen ? 'animate-slide-in' : ''}`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
-        <div className="max-w-4xl mx-auto text-center mt-0 md:mt-8">
-          <div className="mb-8 animate-fade-in">
-            <div className="w-40 h-40 mx-auto mb-6 rounded-full bg-linear-to-r from-blue-500 to-purple-600 p-1">
-              <div className={`w-full h-full rounded-full ${darkMode ? 'bg-gray-900' : 'bg-white'} flex items-center justify-center text-5xl font-bold`}>
-                BA
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left - Text */}
+            <div className="order-2 md:order-1 md:mt-12 mt-0 ml-0 md:ml-20">
+              <div className="mb-5">
+						<h2 className={`text-xl uppercase ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+							Hello, My name is
+						</h2>
+
+						<div className="w-16 h-0.5 bg-gray-500 mt-2" />
+					</div>
+              <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold mb-2 leading-tight">
+                <span className={darkMode ? 'text-white' : 'text-gray-900'}>
+                  Bukunmi Akinwamide
+                </span>
+              </h1>
+              
+              <p className={`text-xl md:text-2xl mb-6 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                Microbiologist turned Front-End Developer
+              </p>
+              
+              <p className={`text-base md:text-lg mb-8 max-w-xl ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                A Passionate Frontend developer focused on bringing ideas into life with innovative solutions.
+                Building beautiful, functional web applications with modern technologies. 
+                Let&apos;s build something amazing together!
+                
+              </p>
+
+              <div className="flex flex-wrap gap-4 mb-8">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('projects');
+                  }}
+                  className="px-8 py-3 bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all"
+                >
+                  View My Work
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('contact');
+                  }}
+                  className={`px-8 py-3 rounded-lg font-semibold border-2 transition-all ${
+                    darkMode 
+                      ? 'border-gray-700 hover:bg-gray-800' 
+                      : 'border-gray-300 hover:bg-gray-100'
+                  }`}
+                >
+                  Get In Touch
+                </button>
+              </div>
+            </div>
+
+            {/* Right - Image */}
+            <div className="order-1 md:order-2 flex justify-start">
+              <div className="relative w-72 h-72 md:w-110 md:h-110">
+                <div className={`w-full h-full rounded-full overflow-hidden ${
+                  darkMode ? 'bg-gray-800' : 'bg-gray-200'
+                }`}>
+                  {/* Placeholder - Replace with your image */}
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className={`text-6xl font-bold ${darkMode ? 'text-gray-600' : 'text-gray-400'}`}>
+                      BA
+                      {/* <Image
+                    src="/my-pic2.svg" 
+                    alt="My Picture"
+                    width={100}
+                    height={100}
+                    className="w-full h-full object-cover"
+                  /> */}
+                    </span>
+                  </div>
+                
+                  
+                 
+                </div>
               </div>
             </div>
           </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-             I&apos;m{' '}
-            <span className="bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Bukunmi Akinwamide
-            </span>
-          </h1>
-          
-          <p className={`text-xl md:text-2xl mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Microbiologist turned Front-End Developer
-          </p>
-          
-          <p className={`text-lg mb-10 max-w-2xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-            Building beautiful, functional web applications with modern technologies. 
-            Passionate about clean code and innovative solutions.
-          </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* Scroll Down */}
+          <div className="flex justify-center mt-16">
             <button
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection('projects');
+                scrollToSection('about');
               }}
-              className="px-8 py-3 bg-linear-to-r from-blue-500 to-purple-600 rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all"
+              className="animate-bounce"
             >
-              View My Work
-            </button>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('contact');
-              }}
-              className={`px-8 py-3 rounded-lg font-semibold border-2 ${
-                darkMode 
-                  ? 'border-gray-700 hover:bg-gray-800' 
-                  : 'border-gray-300 hover:bg-gray-100'
-              } transition-all`}
-            >
-              Get In Touch
+              <ChevronDown size={32} className={darkMode ? 'text-gray-400' : 'text-gray-600'} />
             </button>
           </div>
-
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('about');
-            }}
-            className="mt-16 animate-bounce"
-          >
-            <ChevronDown size={32} className={darkMode ? 'text-gray-400' : 'text-gray-600'} />
-          </button>
         </div>
       </section>
 
@@ -354,7 +389,7 @@ export default function Portfolio() {
                 technology and creating digital experiences led me to the world of web development.
               </p>
               <p className={`mb-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                What began with building simple HTML websites has evolved into creating full-stack applications 
+                What began with building simple HTML websites has grown into creating full-stack applications 
                 with modern frameworks and technologies. I bring the same analytical mindset from my science 
                 background to solving complex programming challenges.
               </p>
