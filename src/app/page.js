@@ -64,55 +64,46 @@ export default function Portfolio() {
   };
 
   const projects = [
-    {
-      title: "HTML Resume",
-      description: "My first ever resume website built with pure HTML. A milestone in my coding journey.",
-      tech: ["HTML", "CSS"],
-      link: "https://omoboi-coder.github.io/html-resume/",
-      github: "#"
-    },
-    {
-      title: "HTML Portfolio",
-      description: "Initial portfolio website showcasing my early web development skills.",
-      tech: ["HTML", "CSS"],
-      link: "https://omoboi-coder.github.io/html-portfolio/",
-      github: "#"
-    },
-    {
-      title: "Bookmark Landing Page",
-      description: "A simple clean website to organise favorite websites efficiently.",
+     {
+      title: "Healthcare App",
+       description: "A well strutured and multi-page Healthcare app for consultation and book test appointments.",
       tech: ["Next.js", "React" ,"JavaScript"],
-      link: "https://my-bookmark-landing-page.vercel.app/",
-      github: "#"
+      link: "https://my-healthcare-app-three.vercel.app/",
+      github: "https://github.com/Omoboi-coder/my-healthcare-app"
     },
+  
+     {
+      title: "Weather App",
+      description: "Interactive weather app with beautiful visualizations and forecasts.",
+      tech: ["React", "OpenWeather API", "Javascript", "Node.js"],
+      link: "https://my-weather-app-pi-opal.vercel.app/",
+      github: "https://github.com/Omoboi-coder/my-weather-app"
+    },
+
     {
       title: "Coffer App",
       description: "A Multi-page financial app for payroll management and budgets for your business.",
       tech: ["Next.js", "React" ,"JavaScript"],
       link: "https://my-coffer-landing-page.vercel.app/",
-      github: "#"
+      github: "https://github.com/Omoboi-coder/my-coffer-app"
     },
+   
     {
-      title: "Weather App",
-      description: "Interactive weather app with beautiful visualizations and forecasts.",
-      tech: ["React", "OpenWeather API", "Javascript", "Node.js"],
-      link: "https://my-weather-app-pi-opal.vercel.app/",
-      github: "#"
+      title: "Bookmark Landing Page",
+      description: "A simple clean website to organise favorite websites efficiently.",
+      tech: ["Next.js", "React" ,"JavaScript"],
+      link: "https://my-bookmark-landing-page.vercel.app/",
+      github: "https://github.com/Omoboi-coder/my-bookmark-landing-page"
     },
+
     {
       title: "Growtoken App",
       description: "A full Multi-page Agriculture financing and safe investment platform",
       tech: ["Next.js", "React" ,"JavaScript"],
       link: "https://growtoken-landing-page.vercel.app/",
-      github: "#"
-    },
-    {
-      title: "Healthcare App",
-       description: "A well strutured and multi-page Healthcare app for consultation and book test appointments.",
-      tech: ["Next.js", "React" ,"JavaScript"],
-      link: "https://my-healthcare-app-three.vercel.app/",
-      github: "#"
+      github: "https://github.com/Omoboi-coder/my-growtoken-app"
     }
+   
   ];
 
   const skills = [
